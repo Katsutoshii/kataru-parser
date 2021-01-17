@@ -1,4 +1,4 @@
-use super::{Branches, Map, Parsable, ParseError, State};
+use super::{Branches, Map, Parsable, ParseError, State, Value};
 use serde::{Deserialize, Serialize};
 
 pub type Dialogue = Map<String, String>;
@@ -6,6 +6,13 @@ pub type Dialogue = Map<String, String>;
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Choices {
     pub choices: Map<String, String>,
+    pub timeout: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+pub struct Cmd {
+    pub cmd: String,
+    pub params: Option<Map<String, Value>>,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -26,6 +33,7 @@ pub enum Line {
     Goto(Goto),
     Text(String),
     SetCmd(SetCmd),
+    Cmd(Cmd),
     Dialogue(Dialogue),
     Continue,
     Break,

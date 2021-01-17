@@ -19,7 +19,7 @@ pub use conditional::Conditional;
 pub use config::Config;
 pub use operator::Operator;
 pub use state::{State, StateMod, StateUpdatable};
-pub use story::{Choices, Dialogue, Line, Passage, Story};
+pub use story::{Choices, Cmd, Dialogue, Line, Passage, Story};
 pub use validator::validate;
 pub use value::Value;
 

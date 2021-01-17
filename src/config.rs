@@ -1,4 +1,4 @@
-use super::{Map, Parsable, ParseError, State};
+use super::{Map, Parsable, ParseError, State, Value};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
@@ -13,6 +13,7 @@ pub struct Config {
     pub passage: String,
     pub line: usize,
     pub state: State,
+    pub cmds: Map<String, Map<String, Value>>,
     pub characters: Characters,
 }
 

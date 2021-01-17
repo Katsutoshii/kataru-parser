@@ -1,6 +1,6 @@
 use super::{
-    Branches, Choices, Comparator, Conditional, Config, Line, Map, Operator, Parsable, ParseError,
-    Passage, State, StateMod, Story, Value,
+    Branches, Choices, Cmd, Comparator, Conditional, Config, Line, Map, Operator, Parsable,
+    ParseError, Passage, State, StateMod, Story, Value,
 };
 use html_parser::Dom;
 
@@ -43,6 +43,30 @@ fn validate_conditional(
     Ok(())
 }
 
+fn validate_params(cmd: &Cmd, config_params: &Map<String, Value>) -> Result<(), ParseError> {
+    match &cmd.params {
+        Some(params) => {
+            for (param, _val) in params {
+                if !config_params.contains_key(param) {
+                    return Err(perror!(
+                        "No such parameter '{}' for command '{}'",
+                        param,
+                        cmd.cmd
+                    ));
+                }
+            }
+            Ok(())
+        }
+        None => Ok(()),
+    }
+}
+fn validate_cmd(config: &Config, cmd: &Cmd) -> Result<(), ParseError> {
+    if !config.cmds.contains_key(&cmd.cmd) {}
+    match config.cmds.get(&cmd.cmd) {
+        None => Err(perror!("No such command '{}'.", cmd.cmd)),
+        Some(config_params) => validate_params(cmd, config_params),
+    }
+}
 /// Validates a line of dialogue.
 fn validate_line(config: &Config, story: &Story, line: &Line) -> Result<(), ParseError> {
     match &line {
@@ -52,6 +76,7 @@ fn validate_line(config: &Config, story: &Story, line: &Line) -> Result<(), Pars
         Line::Choices(choices) => validate_choices(story, choices),
         Line::Goto(goto) => validate_goto(story, &goto.goto),
         Line::SetCmd(cmd) => validate_state(config, &cmd.set),
+        Line::Cmd(cmd) => validate_cmd(config, &cmd),
         _ => Ok(()),
     }
 }
