@@ -15,7 +15,7 @@ pub use config::{CharacterData, Config, Params};
 pub use operator::Operator;
 pub use state::{State, StateMod, StateUpdatable};
 use std::collections::BTreeMap;
-pub use story::{Choices, Cmd, Dialogue, Line, Passage, Story};
+pub use story::{Choices, Cmd, Dialogue, Goto, Line, Passage, SetCmd, Story};
 pub use value::Value;
 
 pub type Map<K, V> = BTreeMap<K, V>;
