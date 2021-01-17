@@ -27,11 +27,3 @@ pub fn pack(dir: &str, outdir: &str) -> io::Result<()> {
     )?;
     Ok(())
 }
-
-/// Deserializes binary.
-pub fn unpack(config_bytes: &[u8], story_bytes: &[u8]) -> (Config, Story) {
-    (
-        rmp_serde::from_slice(config_bytes).unwrap(),
-        rmp_serde::from_slice(story_bytes).unwrap(),
-    )
-}
