@@ -1,4 +1,5 @@
-use super::{Branches, Map, Parsable, ParseError, State, Value};
+use super::{Branches, Map, Parsable, State, Value};
+use crate::ParseError;
 use serde::{Deserialize, Serialize};
 
 pub type Dialogue = Map<String, String>;

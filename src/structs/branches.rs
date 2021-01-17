@@ -1,5 +1,4 @@
-use super::{Conditional, Parsable};
-use crate::{Config, Line, ParseError};
+use super::{Conditional, Config, Line, Parsable, ParseError};
 use linear_map::LinearMap;
 
 pub trait Branchable {

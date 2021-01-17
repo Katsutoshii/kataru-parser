@@ -1,4 +1,5 @@
-use super::{Comparator, Parsable, ParseError, State, Value};
+use super::{Comparator, Parsable, State, Value};
+use crate::ParseError;
 
 #[derive(Debug, PartialEq)]
 pub struct Conditional<'a> {

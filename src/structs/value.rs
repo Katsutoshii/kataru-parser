@@ -1,4 +1,4 @@
-use super::ParseError;
+use crate::ParseError;
 use serde::{Deserialize, Serialize};
 use std::fmt;
 use std::ops::{AddAssign, SubAssign};

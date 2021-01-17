@@ -1,11 +1,9 @@
 state:
   strength: 0
   charisma: 0
-cmds:
-  play_animation:
-    duration: 1
 line: 0
 passage: Start
+cmds: {}
 characters:
   Alice:
     description: A character named Alice.

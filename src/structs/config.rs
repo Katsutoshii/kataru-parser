@@ -7,13 +7,14 @@ pub struct CharacterData {
 }
 
 pub type Characters = Map<String, CharacterData>;
+pub type Params = Map<String, Value>;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Config {
     pub passage: String,
     pub line: usize,
     pub state: State,
-    pub cmds: Map<String, Map<String, Value>>,
+    pub cmds: Map<String, Params>,
     pub characters: Characters,
 }
 

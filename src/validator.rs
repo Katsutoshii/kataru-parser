@@ -1,5 +1,5 @@
 use super::{
-    Branches, Choices, Cmd, Comparator, Conditional, Config, Line, Map, Operator, Parsable,
+    Branches, Choices, Cmd, Comparator, Conditional, Config, Line, Map, Operator, Params, Parsable,
     ParseError, Passage, State, StateMod, Story, Value,
 };
 use html_parser::Dom;
@@ -43,7 +43,7 @@ fn validate_conditional(
     Ok(())
 }
 
-fn validate_params(cmd: &Cmd, config_params: &Map<String, Value>) -> Result<(), ParseError> {
+fn validate_params(cmd: &Cmd, config_params: &Params) -> Result<(), ParseError> {
     match &cmd.params {
         Some(params) => {
             for (param, _val) in params {

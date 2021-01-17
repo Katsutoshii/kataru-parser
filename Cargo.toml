@@ -7,8 +7,9 @@ version = "0.1.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+html_parser = "0.6.2"
 linear-map = {version = "1.2.0", features = ["serde_impl"]}
 regex = "1.4.2"
+rmp-serde = "0.15.1"
 serde = {version = "1.0.117", features = ["derive"]}
 serde_yaml = "0.8.15"
-html_parser = "0.6.2"
